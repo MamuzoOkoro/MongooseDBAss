@@ -36,3 +36,22 @@ const creatingnewuser = async() => {
         })
     }
 }
+// get one user
+const getSingleUser = async(req,res) => {
+    try {
+         // const { userid } = req.params
+        // const getone = await userModel.findById(userid)
+       
+        const getone = await userModel.findById(req.params.userId)
+        return res.status(200).json({
+            message: "get single user",
+            data: getone
+        })
+    } catch (error) {
+        return res.status(400).json({
+            message: "can't get one user"
+        })
+    }
+}
+
+module.exports = { getAllusers, newuser, getSingleUser}
